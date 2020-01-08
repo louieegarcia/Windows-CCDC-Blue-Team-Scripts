@@ -1,3 +1,6 @@
+# Author: Luis Garcia
+# Intended use for CCDC password script
+
 Import-module activedirectory
 
 Write-Host "`nDisabling password complexity, because I guess we don't come up with complex passwords"

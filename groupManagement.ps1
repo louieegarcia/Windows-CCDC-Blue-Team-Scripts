@@ -1,3 +1,6 @@
+# Author: Luis Garcia
+# Script sets groups back to default by removing users that do not belong in the groups by default.
+
 Import-Module ActiveDirectory
 
 write-host "`nRemoving users out of groups unless they belong by default.`n"
@@ -11,7 +14,7 @@ try{
 		} elseif( $user.SamAccountName -eq "Enterprise Admins" ){
 			continue
 		}
-		
+
 		Remove-ADGroupMember -Identity "Administrators" -Member $user.SAMAccountName -confirm:$false
 		write-host "`nRemoved $user.SAMAccountName from Administrators"
 	}
