@@ -11,8 +11,8 @@ try{
 		} elseif( $user.SamAccountName -eq "Enterprise Admins" ){
 			continue
 		}
-
-		Remove-ADGroupMember -Identity "Administrators" -Member $user.SAMAccountName
+		
+		Remove-ADGroupMember -Identity "Administrators" -Member $user.SAMAccountName -confirm:$false
 		write-host "`nRemoved $user.SAMAccountName from Administrators"
 	}
 } catch {
@@ -24,7 +24,7 @@ try{
 		if( $user.SAMAccountName -eq "Administrator" ){
 			continue
 		}
-		Remove-ADGroupMember -Identity "Domain Admins" -Member $user.SAMAccountName
+		Remove-ADGroupMember -Identity "Domain Admins" -Member $user.SAMAccountName -confirm:$false
 		write-host "`nRemoved $user.SAMAccountName from Domain Admins"
 	}
 } catch {
@@ -32,7 +32,7 @@ try{
 }
 try{
 	foreach( $user in (Get-ADGroupMember -Identity "Access Control Assistance Operators") ){
-		Remove-ADGroupMember -Identity "Access Control Assistance Operators" -Member $user.SAMAccountName
+		Remove-ADGroupMember -Identity "Access Control Assistance Operators" -Member $user.SAMAccountName -confirm:$false
 		write-host "`nRemoved $user.SAMAccountName from Access Control Assistance Operators"
 	}
 } catch {
@@ -41,7 +41,7 @@ try{
 
 try {
 	foreach( $user in (Get-ADGroupMember -Identity "Account Operators") ){
-		Remove-ADGroupMember -Identity "Account Operators" -Member $user.SAMAccountName
+		Remove-ADGroupMember -Identity "Account Operators" -Member $user.SAMAccountName -confirm:$false
 		write-host "`nRemoved $user.SAMAccountName from Account Operators"
 	}
 } catch {
@@ -55,7 +55,7 @@ try {
 			# By default, no one is in this group. But I do not know if removing administrator from this group
 			# does not allow administrator to edit DNS. Will test soon.
 		}
-		Remove-ADGroupMember -Identity "DnsAdmins" -Member $user.SAMAccountName
+		Remove-ADGroupMember -Identity "DnsAdmins" -Member $user.SAMAccountName -confirm:$false
 		write-host "`nRemoved $user.SAMAccountName from DnsAdmins"
 	}
 } catch {
@@ -72,7 +72,7 @@ try{
 			}
 			continue
 		}
-		Remove-ADGroupMember -Identity "Domain Guests" -Member $user.SAMAccountName
+		Remove-ADGroupMember -Identity "Domain Guests" -Member $user.SAMAccountName -confirm:$false
 		write-host "`nRemoved $user.SAMAccountName from Domain Guests"
 	}
 } catch {
@@ -84,8 +84,8 @@ try{
 		if( $user.SamAccountName -eq "Administrator" ){
 			continue
 		}
-		Remove-ADGroupMember -Identity "Enterprise Admins" -Member $user.SAMAccountName
-		write-host "Removed $user.SAMAccountName from Enterprise Admins"�
+		Remove-ADGroupMember -Identity "Enterprise Admins" -Member $user.SAMAccountName -confirm:$false
+		write-host "Removed $user.SAMAccountName from Enterprise Admins"?
 	}
 } catch {
 	write-warning "Enterprise Admins : Group does not exist in the AD"
@@ -93,7 +93,7 @@ try{
 
 try{
 	foreach( $user in (Get-ADGroupMember -Identity "Enterprise Key Admins") ){
-		Remove-ADGroupMember -Identity "Enterprise Key Admins" -Member $user.SAMAccountName
+		Remove-ADGroupMember -Identity "Enterprise Key Admins" -Member $user.SAMAccountName -confirm:$false
 		write-host "Removed $user.SAMAccountName from Enterprise Key Admins"
 	}
 } catch {
@@ -102,7 +102,7 @@ try{
 
 try{
 	foreach( $user in (Get-ADGroupMember -Identity "Event Log Readers") ){
-		Remove-ADGroupMember -Identity "Event Log Readers" -Member $user.SAMAccountName
+		Remove-ADGroupMember -Identity "Event Log Readers" -Member $user.SAMAccountName -confirm:$false
 		write-host "Removed $user.SAMAccountName from Event Log Readers"
 	}
 } catch {
@@ -114,7 +114,7 @@ try{
 		if( $user.SamAccountName -eq "Administrator" ){
 			continue
 		}
-		Remove-ADGroupMember -Identity "Group Policy Creators Owners" -Member $user.SAMAccountName
+		Remove-ADGroupMember -Identity "Group Policy Creators Owners" -Member $user.SAMAccountName -confirm:$false
 		write-host "Removed $user.SAMAccountName from Group Policy Creators Owners"
 	}
 } catch {
@@ -133,7 +133,7 @@ try{
 		} elseif( $user.SAMAccountName -eq "Domain Guests"){
 			continue
 		}
-		Remove-ADGroupMember -Identity "Guests" -Member $user.SAMAccountName
+		Remove-ADGroupMember -Identity "Guests" -Member $user.SAMAccountName -confirm:$false
 		write-host "Removed $user.SAMAccountName from Guests"
 	}
 } catch {
@@ -142,7 +142,7 @@ try{
 
 try{
 	foreach( $user in (Get-ADGroupMember -Identity "Hyper-V Administrators") ){
-		Remove-ADGroupMember -Identity "Hyper-V Administrators" -Member $user.SAMAccountName
+		Remove-ADGroupMember -Identity "Hyper-V Administrators" -Member $user.SAMAccountName -confirm:$false
 		write-host "Removed $user.SAMAccountName from Hyper-V Administrators"
 	}
 } catch {
@@ -154,7 +154,7 @@ try{
 		if( $user.SamAccountName -eq "IUSR" ){
 			continue
 		}
-		Remove-ADGroupMember -Identity "IIS_ISURS" -Member $user.SAMAccountName
+		Remove-ADGroupMember -Identity "IIS_ISURS" -Member $user.SAMAccountName -confirm:$false
 		write-host "Removed $user.SAMAccountName from IIS_ISURS"
 	}
 } catch {
@@ -163,7 +163,7 @@ try{
 
 try{
 	foreach( $user in (Get-ADGroupMember -Identity "Remote Desktop Users") ){
-		Remove-ADGroupMember -Identity "Remote Desktop Users" -Member $user.SAMAccountName
+		Remove-ADGroupMember -Identity "Remote Desktop Users" -Member $user.SAMAccountName -confirm:$false
 		write-host "Removed $user.SAMAccountName from Remote Desktop Users"
 	}
 } catch {
@@ -172,7 +172,7 @@ try{
 
 try{
 	foreach( $user in (Get-ADGroupMember -Identity "Remote Management Users") ){
-		Remove-ADGroupMember -Identity "Remote Management Users" -Member $user.SAMAccountName
+		Remove-ADGroupMember -Identity "Remote Management Users" -Member $user.SAMAccountName -confirm:$false
 		write-host "Removed $user.SAMAccountName from Remote Management Users"
 	}
 } catch {
@@ -184,7 +184,7 @@ try{
 		if( $user.SamAccountName -eq "Administrator" ){
 			continue
 		}
-		Remove-ADGroupMember -Identity "Schema Admins" -Member $user.SAMAccountName
+		Remove-ADGroupMember -Identity "Schema Admins" -Member $user.SAMAccountName -confirm:$false
 		write-host "Removed $user.SAMAccountName from Schema Admins"
 	}
 } catch {
@@ -193,7 +193,7 @@ try{
 
 try{
 	foreach( $user in (Get-ADGroupMember -Identity "WinRMRemoteWMIUsers_") ){
-		Remove-AdGroupMember -Identity "WinRMRemoteWMIUsers_" -Member $user.SAMAccountName
+		Remove-AdGroupMember -Identity "WinRMRemoteWMIUsers_" -Member $user.SAMAccountName -confirm:$false
 		write-host "Removed $user.SAMAccountName from WinRMRemoteWMIUsers_"
 	}
 } catch {
@@ -202,7 +202,7 @@ try{
 
 try{
 	foreach( $user in (Get-ADGroupMember -Identity "Storage Replica Administrators") ){
-		Remove-AdGroupMember -Identity "Storage Replica Administrators" -Member $user.SAMAccountName
+		Remove-AdGroupMember -Identity "Storage Replica Administrators" -Member $user.SAMAccountName -confirm:$false
 		write-host "Removed $user.SAMAccountName from Storage Replica Administrators"
 	}
 } catch {
@@ -214,7 +214,7 @@ try{
 		if($user.SAMAccountName -eq "DefaultAccount"){
 			continue
 		}
-		Remove-AdGroupMember -Identity "System Managed Accounts Group" -Member $user.SAMAccountName
+		Remove-AdGroupMember -Identity "System Managed Accounts Group" -Member $user.SAMAccountName -confirm:$false
 		write-host "Removed $user.SAMAccountName from System Managed Accounts Group"
 	}
 } catch {
